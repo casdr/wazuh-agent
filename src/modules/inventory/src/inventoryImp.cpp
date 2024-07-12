@@ -1,5 +1,5 @@
 /*
- * Wazuh SysCollector
+ * Wazuh Inventory
  * Copyright (C) 2015, Wazuh Inc.
  * October 7, 2020.
  *
@@ -8,8 +8,8 @@
  * License (version 2) as published by the FSF - Free Software
  * Foundation.
  */
-#include "syscollector.h"
-#include "syscollector.hpp"
+#include "inventory.h"
+#include "inventory.hpp"
 #include "json.hpp"
 #include <iostream>
 #include "stringHelper.h"
@@ -85,7 +85,7 @@ constexpr auto OS_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_osinfo",
-        "component":"syscollector_osinfo",
+        "component":"inventory_osinfo",
         "index":"os_name",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -136,7 +136,7 @@ constexpr auto OS_START_CONFIG_STATEMENT
                 "order_by_opt":"os_name ASC",
                 "count_opt":1
             },
-        "component":"syscollector_osinfo",
+        "component":"inventory_osinfo",
         "index":"os_name",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -171,7 +171,7 @@ constexpr auto HW_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_hwinfo",
-        "component":"syscollector_hwinfo",
+        "component":"inventory_hwinfo",
         "index":"board_serial",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -222,7 +222,7 @@ constexpr auto HW_START_CONFIG_STATEMENT
                 "order_by_opt":"board_serial ASC",
                 "count_opt":1
             },
-        "component":"syscollector_hwinfo",
+        "component":"inventory_hwinfo",
         "index":"board_serial",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -252,7 +252,7 @@ constexpr auto HOTFIXES_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_hotfixes",
-        "component":"syscollector_hotfixes",
+        "component":"inventory_hotfixes",
         "index":"hotfix",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -303,7 +303,7 @@ constexpr auto HOTFIXES_START_CONFIG_STATEMENT
                 "order_by_opt":"hotfix ASC",
                 "count_opt":1
             },
-        "component":"syscollector_hotfixes",
+        "component":"inventory_hotfixes",
         "index":"hotfix",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -346,7 +346,7 @@ constexpr auto PACKAGES_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_packages",
-        "component":"syscollector_packages",
+        "component":"inventory_packages",
         "index":"item_id",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -397,7 +397,7 @@ constexpr auto PACKAGES_START_CONFIG_STATEMENT
                 "order_by_opt":"item_id ASC",
                 "count_opt":1
             },
-        "component":"syscollector_packages",
+        "component":"inventory_packages",
         "index":"item_id",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -431,7 +431,7 @@ constexpr auto PROCESSES_START_CONFIG_STATEMENT
                 "order_by_opt":"pid ASC",
                 "count_opt":1
             },
-        "component":"syscollector_processes",
+        "component":"inventory_processes",
         "index":"pid",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -452,7 +452,7 @@ constexpr auto PROCESSES_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_processes",
-        "component":"syscollector_processes",
+        "component":"inventory_processes",
         "index":"pid",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -538,7 +538,7 @@ constexpr auto PORTS_START_CONFIG_STATEMENT
                 "order_by_opt":"item_id ASC",
                 "count_opt":1
             },
-        "component":"syscollector_ports",
+        "component":"inventory_ports",
         "index":"item_id",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -559,7 +559,7 @@ constexpr auto PORTS_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_ports",
-        "component":"syscollector_ports",
+        "component":"inventory_ports",
         "index":"item_id",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -630,7 +630,7 @@ constexpr auto NETIFACE_START_CONFIG_STATEMENT
                 "order_by_opt":"item_id ASC",
                 "count_opt":1
             },
-        "component":"syscollector_network_iface",
+        "component":"inventory_network_iface",
         "index":"item_id",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -651,7 +651,7 @@ constexpr auto NETIFACE_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_network_iface",
-        "component":"syscollector_network_iface",
+        "component":"inventory_network_iface",
         "index":"item_id",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -725,7 +725,7 @@ constexpr auto NETPROTO_START_CONFIG_STATEMENT
                 "order_by_opt":"item_id ASC",
                 "count_opt":1
             },
-        "component":"syscollector_network_protocol",
+        "component":"inventory_network_protocol",
         "index":"item_id",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -746,7 +746,7 @@ constexpr auto NETPROTO_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_network_protocol",
-        "component":"syscollector_network_protocol",
+        "component":"inventory_network_protocol",
         "index":"item_id",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -811,7 +811,7 @@ constexpr auto NETADDRESS_START_CONFIG_STATEMENT
                 "order_by_opt":"item_id ASC",
                 "count_opt":1
             },
-        "component":"syscollector_network_address",
+        "component":"inventory_network_address",
         "index":"item_id",
         "last_event":"last_event",
         "checksum_field":"checksum",
@@ -832,7 +832,7 @@ constexpr auto NETADDRESS_SYNC_CONFIG_STATEMENT
     {
         "decoder_type":"JSON_RANGE",
         "table":"dbsync_network_address",
-        "component":"syscollector_network_address",
+        "component":"inventory_network_address",
         "index":"item_id",
         "checksum_field":"checksum",
         "no_data_query_json": {
@@ -952,7 +952,7 @@ static bool isElementDuplicated(const nlohmann::json& input, const std::pair<std
     return it != input.end();
 }
 
-void Syscollector::notifyChange(ReturnTypeCallback result, const nlohmann::json& data, const std::string& table)
+void Inventory::notifyChange(ReturnTypeCallback result, const nlohmann::json& data, const std::string& table)
 {
     if (DB_ERROR == result)
     {
@@ -992,7 +992,7 @@ void Syscollector::notifyChange(ReturnTypeCallback result, const nlohmann::json&
     }
 }
 
-void Syscollector::updateChanges(const std::string& table,
+void Inventory::updateChanges(const std::string& table,
                                  const nlohmann::json& values)
 {
     const auto callback
@@ -1017,7 +1017,7 @@ void Syscollector::updateChanges(const std::string& table,
     txn.getDeletedRows(callback);
 }
 
-Syscollector::Syscollector()
+Inventory::Inventory()
     : m_intervalValue { 0 }
     , m_scanOnStart { false }
     , m_hardware { false }
@@ -1032,7 +1032,7 @@ Syscollector::Syscollector()
     , m_notify { false }
 {}
 
-std::string Syscollector::getCreateStatement() const
+std::string Inventory::getCreateStatement() const
 {
     std::string ret;
 
@@ -1049,7 +1049,7 @@ std::string Syscollector::getCreateStatement() const
 }
 
 
-void Syscollector::registerWithRsync()
+void Inventory::registerWithRsync()
 {
     const auto reportSyncWrapper
     {
@@ -1095,7 +1095,7 @@ void Syscollector::registerWithRsync()
 
     if (m_os)
     {
-        m_spRsync->registerSyncID("syscollector_osinfo",
+        m_spRsync->registerSyncID("inventory_osinfo",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(OS_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
@@ -1103,7 +1103,7 @@ void Syscollector::registerWithRsync()
 
     if (m_hardware)
     {
-        m_spRsync->registerSyncID("syscollector_hwinfo",
+        m_spRsync->registerSyncID("inventory_hwinfo",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(HW_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
@@ -1111,7 +1111,7 @@ void Syscollector::registerWithRsync()
 
     if (m_processes)
     {
-        m_spRsync->registerSyncID("syscollector_processes",
+        m_spRsync->registerSyncID("inventory_processes",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(PROCESSES_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
@@ -1119,7 +1119,7 @@ void Syscollector::registerWithRsync()
 
     if (m_packages)
     {
-        m_spRsync->registerSyncID("syscollector_packages",
+        m_spRsync->registerSyncID("inventory_packages",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(PACKAGES_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
@@ -1127,7 +1127,7 @@ void Syscollector::registerWithRsync()
 
     if (m_hotfixes)
     {
-        m_spRsync->registerSyncID("syscollector_hotfixes",
+        m_spRsync->registerSyncID("inventory_hotfixes",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(HOTFIXES_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
@@ -1135,7 +1135,7 @@ void Syscollector::registerWithRsync()
 
     if (m_ports)
     {
-        m_spRsync->registerSyncID("syscollector_ports",
+        m_spRsync->registerSyncID("inventory_ports",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(PORTS_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
@@ -1143,21 +1143,21 @@ void Syscollector::registerWithRsync()
 
     if (m_network)
     {
-        m_spRsync->registerSyncID("syscollector_network_iface",
+        m_spRsync->registerSyncID("inventory_network_iface",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(NETIFACE_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
-        m_spRsync->registerSyncID("syscollector_network_protocol",
+        m_spRsync->registerSyncID("inventory_network_protocol",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(NETPROTO_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
-        m_spRsync->registerSyncID("syscollector_network_address",
+        m_spRsync->registerSyncID("inventory_network_address",
                                   m_spDBSync->handle(),
                                   nlohmann::json::parse(NETADDRESS_SYNC_CONFIG_STATEMENT),
                                   reportSyncWrapper);
     }
 }
-void Syscollector::init(const std::shared_ptr<ISysInfo>& spInfo,
+void Inventory::init(const std::shared_ptr<ISysInfo>& spInfo,
                         const std::function<void(const std::string&)> reportDiffFunction,
                         const std::function<void(const std::string&)> reportSyncFunction,
                         const std::function<void(const modules_log_level_t, const std::string&)> logFunction,
@@ -1197,12 +1197,12 @@ void Syscollector::init(const std::shared_ptr<ISysInfo>& spInfo,
     m_stopping = false;
     m_spDBSync = std::make_unique<DBSync>(HostType::AGENT, DbEngineType::SQLITE3, dbPath, getCreateStatement());
     m_spRsync = std::make_unique<RemoteSync>();
-    m_spNormalizer = std::make_unique<SysNormalizer>(normalizerConfigPath, normalizerType);
+    m_spNormalizer = std::make_unique<InvNormalizer>(normalizerConfigPath, normalizerType);
     registerWithRsync();
     syncLoop(lock);
 }
 
-void Syscollector::destroy()
+void Inventory::destroy()
 {
     std::unique_lock<std::mutex> lock{m_mutex};
     m_stopping = true;
@@ -1210,7 +1210,7 @@ void Syscollector::destroy()
     lock.unlock();
 }
 
-nlohmann::json Syscollector::getHardwareData()
+nlohmann::json Inventory::getHardwareData()
 {
     nlohmann::json ret;
     ret[0] = m_spInfo->hardware();
@@ -1218,7 +1218,7 @@ nlohmann::json Syscollector::getHardwareData()
     return ret;
 }
 
-void Syscollector::scanHardware()
+void Inventory::scanHardware()
 {
     if (m_hardware)
     {
@@ -1229,12 +1229,12 @@ void Syscollector::scanHardware()
     }
 }
 
-void Syscollector::syncHardware()
+void Inventory::syncHardware()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(HW_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-nlohmann::json Syscollector::getOSData()
+nlohmann::json Inventory::getOSData()
 {
     nlohmann::json ret;
     ret[0] = m_spInfo->os();
@@ -1242,7 +1242,7 @@ nlohmann::json Syscollector::getOSData()
     return ret;
 }
 
-void Syscollector::scanOs()
+void Inventory::scanOs()
 {
     if (m_os)
     {
@@ -1253,12 +1253,12 @@ void Syscollector::scanOs()
     }
 }
 
-void Syscollector::syncOs()
+void Inventory::syncOs()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(OS_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-nlohmann::json Syscollector::getNetworkData()
+nlohmann::json Inventory::getNetworkData()
 {
     nlohmann::json ret;
     const auto& networks { m_spInfo->networks() };
@@ -1368,7 +1368,7 @@ nlohmann::json Syscollector::getNetworkData()
     return ret;
 }
 
-void Syscollector::scanNetwork()
+void Inventory::scanNetwork()
 {
     if (m_network)
     {
@@ -1403,14 +1403,14 @@ void Syscollector::scanNetwork()
     }
 }
 
-void Syscollector::syncNetwork()
+void Inventory::syncNetwork()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(NETIFACE_START_CONFIG_STATEMENT), m_reportSyncFunction);
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(NETPROTO_START_CONFIG_STATEMENT), m_reportSyncFunction);
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(NETADDRESS_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-void Syscollector::scanPackages()
+void Inventory::scanPackages()
 {
     if (m_packages)
     {
@@ -1453,7 +1453,7 @@ void Syscollector::scanPackages()
     }
 }
 
-void Syscollector::scanHotfixes()
+void Inventory::scanHotfixes()
 {
     if (m_hotfixes)
     {
@@ -1474,17 +1474,17 @@ void Syscollector::scanHotfixes()
     }
 }
 
-void Syscollector::syncPackages()
+void Inventory::syncPackages()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(PACKAGES_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-void Syscollector::syncHotfixes()
+void Inventory::syncHotfixes()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(HOTFIXES_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-nlohmann::json Syscollector::getPortsData()
+nlohmann::json Inventory::getPortsData()
 {
     nlohmann::json ret;
     constexpr auto PORT_LISTENING_STATE { "listening" };
@@ -1547,7 +1547,7 @@ nlohmann::json Syscollector::getPortsData()
     return ret;
 }
 
-void Syscollector::scanPorts()
+void Inventory::scanPorts()
 {
     if (m_ports)
     {
@@ -1558,12 +1558,12 @@ void Syscollector::scanPorts()
     }
 }
 
-void Syscollector::syncPorts()
+void Inventory::syncPorts()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(PORTS_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-void Syscollector::scanProcesses()
+void Inventory::scanProcesses()
 {
     if (m_processes)
     {
@@ -1600,12 +1600,12 @@ void Syscollector::scanProcesses()
     }
 }
 
-void Syscollector::syncProcesses()
+void Inventory::syncProcesses()
 {
     m_spRsync->startSync(m_spDBSync->handle(), nlohmann::json::parse(PROCESSES_START_CONFIG_STATEMENT), m_reportSyncFunction);
 }
 
-void Syscollector::scan()
+void Inventory::scan()
 {
     m_logFunction(LOG_INFO, "Starting evaluation.");
     m_scanTime = Utils::getCurrentTimestamp();
@@ -1621,9 +1621,9 @@ void Syscollector::scan()
     m_logFunction(LOG_INFO, "Evaluation finished.");
 }
 
-void Syscollector::sync()
+void Inventory::sync()
 {
-    m_logFunction(LOG_DEBUG, "Starting syscollector sync");
+    m_logFunction(LOG_DEBUG, "Starting inventory sync");
     TRY_CATCH_TASK(syncHardware);
     TRY_CATCH_TASK(syncOs);
     TRY_CATCH_TASK(syncNetwork);
@@ -1631,10 +1631,10 @@ void Syscollector::sync()
     TRY_CATCH_TASK(syncHotfixes);
     TRY_CATCH_TASK(syncPorts);
     TRY_CATCH_TASK(syncProcesses);
-    m_logFunction(LOG_DEBUG, "Ending syscollector sync");
+    m_logFunction(LOG_DEBUG, "Ending inventory sync");
 }
 
-void Syscollector::syncAlgorithm()
+void Inventory::syncAlgorithm()
 {
     m_currentIntervalValue = m_intervalValue / 2 >= MAX_DELAY_TIME ? MAX_DELAY_TIME : m_intervalValue / 2;
 
@@ -1646,11 +1646,11 @@ void Syscollector::syncAlgorithm()
     }
     else
     {
-        m_logFunction(LOG_DEBUG_VERBOSE, "Syscollector synchronization process concluded recently, delaying scan for " + std::to_string(m_currentIntervalValue.count()) + " second/s");
+        m_logFunction(LOG_DEBUG_VERBOSE, "Inventory synchronization process concluded recently, delaying scan for " + std::to_string(m_currentIntervalValue.count()) + " second/s");
     }
 }
 
-void Syscollector::syncLoop(std::unique_lock<std::mutex>& lock)
+void Inventory::syncLoop(std::unique_lock<std::mutex>& lock)
 {
     m_logFunction(LOG_INFO, "Module started.");
 
@@ -1671,7 +1671,7 @@ void Syscollector::syncLoop(std::unique_lock<std::mutex>& lock)
     m_spDBSync.reset(nullptr);
 }
 
-void Syscollector::push(const std::string& data)
+void Inventory::push(const std::string& data)
 {
     std::unique_lock<std::mutex> lock{m_mutex};
 
