@@ -39,10 +39,12 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cm
 include(${CMAKE_TOOLCHAIN_FILE})
 
 find_package(cJSON CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
 ####################################################################################################
 
 # Enable testing
 enable_testing()
 
 # Add the subdirectory for each child project
+add_subdirectory(common/data_provider/)
 add_subdirectory(modules/)
