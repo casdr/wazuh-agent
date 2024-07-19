@@ -3,6 +3,8 @@
     "version": "5.0.0",
     "dependencies": [
       "cjson",
-      "nlohmann-json"
+      "curl",
+      "nlohmann-json",
+      "libarchive"
     ]
   }
