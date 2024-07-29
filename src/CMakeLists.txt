@@ -42,6 +42,8 @@ find_package(cJSON CONFIG REQUIRED)
 find_package(CURL REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(LibArchive REQUIRED)
+find_package(Lua REQUIRED)
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
 ####################################################################################################
 
 # Enable testing

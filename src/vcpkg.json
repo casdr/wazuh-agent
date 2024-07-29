@@ -5,6 +5,9 @@
       "cjson",
       "curl",
       "nlohmann-json",
-      "libarchive"
+      "libarchive",
+      "lua",
+      "libpopt",
+      "sqlite3"
     ]
   }
