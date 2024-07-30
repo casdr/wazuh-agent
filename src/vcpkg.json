@@ -1,13 +1,20 @@
 {
-    "name": "wazuh-agent-mvp",
-    "version": "5.0.0",
-    "dependencies": [
-      "cjson",
-      "curl",
-      "nlohmann-json",
-      "libarchive",
-      "lua",
-      "libpopt",
-      "sqlite3"
-    ]
-  }
+  "name": "wazuh-agent-mvp",
+  "version": "5.0.0",
+  "dependencies": [
+    "cjson",
+    "curl",
+    "nlohmann-json",
+    "libarchive",
+    "lua",
+    "libpopt",
+    "sqlite3"
+  ],
+  "builtin-baseline": "adb391bd2cb05fdaef1ccef375dd50d998f01cc0",
+  "overrides": [
+    {
+      "name": "lua",
+      "version": "5.3.5#6"
+    }
+  ]
+}
