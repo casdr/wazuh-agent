@@ -50,5 +50,8 @@ find_package(unofficial-sqlite3 CONFIG REQUIRED)
 enable_testing()
 
 # Add the subdirectory for each child project
+add_subdirectory(common/debug_op/)
+add_subdirectory(common/logging_helper/)
 add_subdirectory(common/data_provider/)
+add_subdirectory(common/dbsync/)
 add_subdirectory(modules/)
