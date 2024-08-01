@@ -110,6 +110,15 @@
 #include <errno.h>
 #include <libgen.h>
 
+#include "defs.h"
+
+#include "time_op.h"
+#include "file_op.h"
+#include "privsep_op.h"
+#include "pthreads_op.h"
+#include "os_xml.h"
+#include "error_messages.h"
+
 #ifndef LARGEFILE64_SOURCE
 #define LARGEFILE64_SOURCE
 #endif /* LARGEFILE64_SOURCE */
