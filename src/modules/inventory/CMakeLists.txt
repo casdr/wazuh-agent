@@ -41,4 +41,7 @@ target_link_libraries(inventory PUBLIC
     alpm
     rpm
     db
-    logging_helper)
+    utils
+    os_regex
+    logging_helper
+    pthreads_op)

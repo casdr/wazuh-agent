@@ -44,14 +44,12 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(LibArchive REQUIRED)
 find_package(Lua REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
+find_package(ZLIB REQUIRED)
 ####################################################################################################
 
 # Enable testing
 enable_testing()
 
 # Add the subdirectory for each child project
-add_subdirectory(common/debug_op/)
-add_subdirectory(common/logging_helper/)
-add_subdirectory(common/data_provider/)
-add_subdirectory(common/dbsync/)
+add_subdirectory(common/)
 add_subdirectory(modules/)

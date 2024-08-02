@@ -8,7 +8,8 @@
     "libarchive",
     "lua",
     "libpopt",
-    "sqlite3"
+    "sqlite3",
+    "zlib"
   ],
   "builtin-baseline": "adb391bd2cb05fdaef1ccef375dd50d998f01cc0",
   "overrides": [

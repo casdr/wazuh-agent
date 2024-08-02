@@ -1,12 +1,15 @@
-add_library(debug_op src/debug_op.c)
+add_library(debug_op STATIC src/debug_op.c)
 
-include_directories(include)
-include_directories(${CMAKE_SOURCE_DIR}/common/utils/)
-include_directories(${CMAKE_SOURCE_DIR}/common/error_messages/include/)
-include_directories(${CMAKE_SOURCE_DIR}/common/file_op/include/)
-include_directories(${CMAKE_SOURCE_DIR}/common/os_xml/include/)
-include_directories(${CMAKE_SOURCE_DIR}/common/privsep_op/include/)
-include_directories(${CMAKE_SOURCE_DIR}/common/pthreads_op/include/)
-include_directories(${CMAKE_SOURCE_DIR}/common/time_op/include/)
+target_include_directories(debug_op PUBLIC include)
 
-target_link_libraries(debug_op cjson)
+target_link_libraries(debug_op
+    utils
+    time_op
+    file_op
+    privsep_op
+    pthreads_op
+    os_xml
+    error_messages
+    os_regex
+    string_op
+    cjson)
