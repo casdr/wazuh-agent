@@ -32,6 +32,8 @@ target_include_directories(inventory PUBLIC
 target_link_directories(inventory PUBLIC ${SRC_FOLDER}/external/pacman/lib/libalpm/)
 target_link_directories(inventory PUBLIC ${SRC_FOLDER}/external/rpm/builddir/)
 target_link_directories(inventory PUBLIC ${SRC_FOLDER}/external/libdb/build_unix/)
+target_link_directories(inventory PUBLIC ${SRC_FOLDER}/external/procps/)
+
 
 target_link_libraries(inventory PUBLIC
     dbsync
@@ -41,6 +43,7 @@ target_link_libraries(inventory PUBLIC
     alpm
     rpm
     db
+    proc
     utils
     os_regex
     logging_helper

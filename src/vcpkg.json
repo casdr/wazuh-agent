@@ -8,6 +8,7 @@
     "libarchive",
     "lua",
     "libpopt",
+    "pcre2",
     "sqlite3",
     "zlib"
   ],

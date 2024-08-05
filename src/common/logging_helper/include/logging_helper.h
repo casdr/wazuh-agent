@@ -12,6 +12,10 @@
 #ifndef _LOGGINGHELPER_H
 #define _LOGGINGHELPER_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum modules_log_level_t
 {
     LOG_DEBUG,
@@ -22,15 +26,6 @@ typedef enum modules_log_level_t
     LOG_DEBUG_VERBOSE
 } modules_log_level_t;
 
-const char *strlevel[6]={
-    "DEBUG",
-    "INFO",
-    "WARNING",
-    "ERROR",
-    "CRITICAL",
-    "DEBUG2"
-};
-
 /**
  * @brief Global function to send a log message
  *
@@ -39,5 +34,24 @@ const char *strlevel[6]={
  * @param tag Tag representing the module sending the log
  */
 void taggedLogFunction(modules_log_level_t level, const char* log, const char* tag);
+
+/**
+ * @brief Global function to send a log message
+ *
+ * @param level Represent the log mode: ERROR, ERROR_EXIT, INFO, WARNING, DEBUG and DEBUG_VERBOSE
+ * @param log Message to send into the log
+ */
+void loggingFunction(modules_log_level_t level, const char* log);
+
+/**
+ * @brief Global function to send a error log message
+ *
+ * @param log Message to send into the log as error
+ */
+void loggingErrorFunction(const char* log);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //_LOGGINGHELPER_H

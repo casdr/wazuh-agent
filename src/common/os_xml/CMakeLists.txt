@@ -1,4 +1,6 @@
-add_library(os_xml STATIC src/os_xml.c)
+file(GLOB OS_XML_SOURCES src/*.c)
+
+add_library(os_xml STATIC ${OS_XML_SOURCES})
 
 target_include_directories(os_xml PUBLIC include)
 

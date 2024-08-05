@@ -237,6 +237,7 @@ target_link_libraries(sysinfo
   ${POPT_LIBRARY}
   alpm
   rpm
+  proc
   ${LUA_LIBRARIES})
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
