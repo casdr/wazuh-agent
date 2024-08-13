@@ -6,21 +6,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wunused -pthread")
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
-
 find_package(SQLiteCpp REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(fmt REQUIRED)
-find_package(Boost REQUIRED COMPONENTS asio beast)
+find_package(Boost REQUIRED COMPONENTS asio)
 
 add_library(queue
 	src/sqlitestorage.cpp
 	src/queue.cpp
 )
 
-target_include_directories(queue PRIVATE include ${SQLiteCpp_INCLUDE_DIRS})
-target_link_libraries(queue PRIVATE SQLiteCpp nlohmann_json::nlohmann_json fmt::fmt Boost::asio)
+target_include_directories(queue PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include PRIVATE ${SQLiteCpp_INCLUDE_DIRS})
+target_link_libraries(queue PUBLIC nlohmann_json::nlohmann_json Boost::asio PRIVATE SQLiteCpp nlohmann_json::nlohmann_json fmt::fmt Boost::asio)
 
 if(BUILD_TESTS)
+	enable_testing()
     add_subdirectory(tests)
 endif()
